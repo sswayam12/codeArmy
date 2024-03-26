@@ -15,6 +15,7 @@ class Customer{
         this->acc_num = acc_num;
         this->balance = balance;
         total_customer++; 
+        total_balance+=balance;
     }
     static void acceStatic(){
         cout<<total_customer<<endl;
@@ -25,8 +26,16 @@ class Customer{
             total_balance+=amount;
         }
     }
-    static void total_deposit(){
-        
+    void total_deposit(int amount){
+        if(amount >  0){
+            balance += amount;
+            total_balance+=amount;
+        }
+    }
+    void withdraw(int amount){
+        if(amount == balance && amount > 0){
+            balance -= amount;
+        }
     }
     void Display(){
         cout<<name<<" "<<acc_num<<" "<<balance<<" "<<total_customer<<endl;
@@ -41,5 +50,5 @@ int main(){
     Customer A2("Vikram",2345,45667);
     A2.Display();
     Customer::acceStatic();
-    
+    A1.deposit(800);
 }
